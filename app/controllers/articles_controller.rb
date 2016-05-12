@@ -1,7 +1,8 @@
 class ArticlesController < ApplicationController
 
 def index
-    @articles = Article.all
+    @articles = Article.page(params[:page]).per(10)
+
 end
 
 def show
@@ -15,7 +16,7 @@ def create
 	@article = Article.new(article_params)
 
  	@article.save
- 	redirect_to @article
+ 	redirect_to articles_path
 end
 
 private 
