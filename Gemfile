@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 gem 'twitter-bootstrap-rails', '3.2.0'
 gem 'kaminari'
+gem 'better_errors', '~> 2.1', '>= 2.1.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'

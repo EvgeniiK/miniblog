@@ -1,9 +1,8 @@
 class ArticlesController < ApplicationController
 
 def index
-    @articles = Article.order('created_at DESC').page(params[:page]).per(10)
     @article = Article.new
-
+	@articles = Article.all
 end
 
 def show
@@ -13,11 +12,23 @@ end
 def new
 end
 
-def create
-	@article = Article.new(article_params)
+def showall
+	    @articles = Article.order('created_at DESC').page(params[:page]).per(10)
+end
 
- 	@article.save
- 	redirect_to articles_path
+def create
+
+	@article = Article.new(article_params)
+	@article.save
+
+	respond_to do |format|
+    if @article.save
+      format.html { redirect_to @article }
+      format.js   
+  	end
+
+end
+
 end
 
 private 
